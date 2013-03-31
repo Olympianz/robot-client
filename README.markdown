@@ -8,11 +8,11 @@ This project aims to record the traffic transformation between robotic client an
     - Under server directory, create a build folder
     - In build folder, run cmake ..
     - run make
-    - run ./server -rrtp 8101 -sp 7272 (Client port # and Server port #)
+    - run ./server -rttp 8101 -sp 7272 (Client port # and Server port #)
 3. Run Client
     - Under server director, create a build folder
     - In build folder, run cmake ..
     - run make
-    - run ./client -host {path for configuration file, such as ../simulator.txt }
+    - run ./client -hosts {path for configuration file, such as ../simulator.txt }
 
 
