@@ -4,7 +4,8 @@ project(CLIENT)
 # Source files
 set(SRC
     helpers.cc ConfigFileReader.cc MoveHandler.cc 
-    SensorDataHandler.cc SensorDataViewer.cc client.cc)
+    SensorDataHandler.cc SensorDataViewer.cc client.cc
+    ClientSocketUnit.cc ClientSockets.cc)
 # Program name
 set(PROG client)
 

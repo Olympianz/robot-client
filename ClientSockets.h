@@ -2,8 +2,10 @@
 #define CLIENT_SOCKETS_CHONG_H_XXX
 
 #include <vector>
+#include "ArNetworking.h"
 #include "Aria.h"
 #include "ConfigFileReader.h"
+#include "ClientSocketUnit.h"
 
 /* This class aims to monitor and log the traffic 
  * between robot servers and client by reading the 
@@ -13,7 +15,9 @@
 
 class ClientSockets {
     public:
-        ClientSockets(  std::vector<ArClientBase *>&, const std::vector<HostInfo>& );
+        typedef std::vector<ArSocket *>::size_type sock_sz;
+        
+        ClientSockets ( ClientSocketUnit& );
 
         std::vector<long>& getData (std::vector<long>&);
         std::vector<long>  getData ();
@@ -21,9 +25,8 @@ class ClientSockets {
         void printData ();
 
     private:
-        std::vector<ArSocket *> v_socks; 
-        const std::vector<ArClientBase *>& v_clients;
-        const std::vector<HostInfo>& hostsinfo; 
+        std::vector<ArSocket *> socks; 
+        ClientSocketUnit &units; 
 };
 
 
