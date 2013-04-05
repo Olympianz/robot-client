@@ -23,9 +23,12 @@ class ClientSockets {
         std::vector<long>  getData ();
 
         void printData ();
+	sock_sz size();
+	bool udpConnected();
 
     private:
-        std::vector<ArSocket *> socks; 
+        std::vector<ArSocket *> udpSockets;
+	std::vector<ArSocket *> tcpSockets;
         ClientSocketUnit &units; 
 };
 
