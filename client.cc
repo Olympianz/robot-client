@@ -110,6 +110,8 @@ int main(int argc, char **argv)
   // breathing time for inital setup procedures
   ArUtil::sleep(500);
 
+
+
   // Counter to increase the sleep time
   int receivedDataCounter = 0; 
   // check for key presses, button presses and new data
@@ -126,6 +128,7 @@ int main(int argc, char **argv)
         receivedDataCounter = 0;
     }
   }
+
 
   Aria::shutdown();
 }
