@@ -22,8 +22,8 @@ class ClientSocketUnit {
          * construct a robotname, then pass it to client. So, we can call robotName
          * through client->getRobotName
          */
-        const char* getRobotName(ArClientBase*, const HostInfo&);
-        const char* getRobotName(unsigned long); //return robot name for each input index
+        const char* getRobName(ArClientBase*, const HostInfo&);
+        const char* getRobName(unsigned long); //return robot name for each input index
         unsigned long size();
         ArClientBase* getClient(unsigned long);
 
