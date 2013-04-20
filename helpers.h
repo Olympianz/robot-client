@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "ArNetworking.h"
+#include "SuperClient.h"
 
 // forward declaratiosn
 struct HostInfo;

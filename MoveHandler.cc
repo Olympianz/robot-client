@@ -3,6 +3,7 @@
 
 #include "MoveHandler.h"
 #include "helpers.h"
+#include "SuperClient.h"
 
 // names of actions
 const char *MoveHandler::actions[] = {

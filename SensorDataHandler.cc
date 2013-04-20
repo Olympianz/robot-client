@@ -14,6 +14,7 @@
 
 #include "helpers.h"
 #include "SensorDataHandler.h"
+#include "SuperClient.h"
 
 
 // useful constants for the kalman filter

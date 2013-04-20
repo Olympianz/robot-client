@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "ArNetworking.h"
-
+#include "SuperClient.h"
 #include "pcl/point_types.h"
 #include "pcl/point_cloud.h"
 

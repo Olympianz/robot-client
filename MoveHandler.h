@@ -2,6 +2,7 @@
 #define MOVE_HANDLER_H
 
 #include "ArNetworking.h"
+#include "SuperClient.h"
 
 // Abstract base class to provide an interface for
 // moving client robots

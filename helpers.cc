@@ -6,6 +6,7 @@
 #include "ConfigFileReader.h"
 #include "SensorDataViewer.h"
 #include "SensorDataHandler.h"
+#include "SuperClient.h"
 
 
 // some message display routines
