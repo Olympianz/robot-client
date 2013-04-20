@@ -6,8 +6,15 @@
 
 using std::vector;      using std::cout;
 
-ClientSocketUnit::ClientSocketUnit(vector<ArClientBase *> &client, const vector<HostInfo> &hInfo)
+ClientSocketUnit::ClientSocketUnit(vector<ArClientBase *> &client, vector<HostInfo> hInfo)
                                     :clients(client), hostInfo(hInfo) { }
+
+
+ClientSocketUnit::ClientSocketUnit(ArClientBase* client, vector<HostInfo> hInfo)
+{ 
+    clients.push_back(client);
+    hostInfo = vector<HostInfo>(hInfo);
+}
 
 const char* ClientSocketUnit::getRobName(ArClientBase *client, const HostInfo& hInfo){
     char nameBuffer[100];

@@ -15,7 +15,8 @@ struct HostInfo;
 
 class ClientSocketUnit {
     public:
-        ClientSocketUnit(std::vector<ArClientBase*>& , const std::vector<HostInfo>&);
+        ClientSocketUnit(std::vector<ArClientBase*>& , std::vector<HostInfo>);
+        ClientSocketUnit(ArClientBase*, std::vector<HostInfo>);
         typedef std::vector<ArClientBase *>::size_type CSU_size;
 
         /* this function takes a client and one hostInfo as input, using hostInfo 
@@ -28,8 +29,8 @@ class ClientSocketUnit {
         ArClientBase* getClient(unsigned long);
 
     private:
-        std::vector<ArClientBase *> &clients;
-        const std::vector<HostInfo> &hostInfo;
+        std::vector<ArClientBase *> clients;
+        std::vector<HostInfo> hostInfo;
         //std::vector<HostInfo > hostInfo;        
 };
 
