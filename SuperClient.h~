@@ -1,8 +1,0 @@
-#ifndef SUPER_CLIENT_CHONG_H_XXX
-#define SUPER_CLIENT_CHONG_H_XXX
-
-#include "ArClientBase.h"
-
-
-
-#endif

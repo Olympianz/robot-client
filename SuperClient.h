@@ -9,8 +9,6 @@
  */
 
 class SuperClient :public ArClientBase {
- public:
-   
 };
 
 

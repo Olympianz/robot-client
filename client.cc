@@ -52,7 +52,7 @@ int main(int argc, char **argv)
   // list of information about each host
   std::vector<HostInfo> hostsInfo;
   // list of superClients who inherits from ArClientBase
-  std::vector<SuperClient *> Clients;
+  std::vector<SuperClient *> clients;
   // list of clients to connect to each server
   // std::vector<ArClientBase *> clients;
   // list of sensor data handlers for clients

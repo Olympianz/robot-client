@@ -2,6 +2,7 @@
 #define MOVE_HANDLER_H
 
 #include "ArNetworking.h"
+#include "SuperClient.h"
 
 // Abstract base class to provide an interface for
 // moving client robots
@@ -19,7 +20,7 @@ public:
   virtual void displayKeys() = 0;
 
 protected:
-  MoveHandler(std::vector<ArClientBase *> &clients);
+  MoveHandler(std::vector<SuperClient *> &clients);
   virtual void ratioDrive();
   virtual void wander();
   virtual void stop();
@@ -31,9 +32,9 @@ protected:
 
   static const char *actions[];
 
-  std::vector<ArClientBase *> &myClients;
+  std::vector<SuperClient *> &myClients;
   int myClientIndex;
-  ArClientBase *myClient;
+  SuperClient *myClient;
   double myTransRatio;
   double myRotRatio;
   double mySpeedLimit;
@@ -43,7 +44,7 @@ protected:
 // Move using keyboard
 class MoveKeyHandler : public MoveHandler {
 public:
-  MoveKeyHandler(std::vector<ArClientBase *> &clients,
+  MoveKeyHandler(std::vector<SuperClient *> &clients,
       ArKeyHandler *keyHandler);
   virtual void update();
   virtual void displayKeys();
@@ -75,7 +76,7 @@ private:
 // Move using Joystick
 class MoveJoyHandler : public MoveHandler {
 public:
-  MoveJoyHandler(std::vector<ArClientBase *> &clients,
+  MoveJoyHandler(std::vector<SuperClient *> &clients,
       ArJoyHandler *joyHandler);
   virtual void update();
   virtual void displayKeys();
