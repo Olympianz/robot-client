@@ -5,7 +5,7 @@ project(CLIENT)
 set(SRC
     helpers.cc ConfigFileReader.cc MoveHandler.cc 
     SensorDataHandler.cc SensorDataViewer.cc client.cc
-    ClientSocketUnit.cc ClientSockets.cc)
+    ClientSocketUnit.cc ClientSockets.cc SuperClient.cc)
 # Program name
 set(PROG client)
 

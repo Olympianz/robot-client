@@ -9,6 +9,11 @@
  */
 
 class SuperClient :public ArClientBase {
+ public:
+  long dataSent();
+  long dataReceived();
+  void receivedDataToFile();
+
 };
 
 
