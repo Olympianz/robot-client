@@ -20,9 +20,9 @@ void errorExit(std::string msg);
 int rgba(int r, int g, int b);
 void escapePressed();
 const char *createRobotName(const char *IP);
-void connectHosts(std::vector<ArClientBase *> &clients,
+void connectHosts(std::vector<SuperClient *> &clients,
                   const std::vector<HostInfo> &hostsInfo);
-void startClients(std::vector<ArClientBase *> clients);
+void startClients(std::vector<SuperClient *> clients);
 std::string genTimeStr();
 bool genDir(const std::string &dirName);
 long getElapsedTime();

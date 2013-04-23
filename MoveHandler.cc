@@ -20,7 +20,7 @@ const char *MoveHandler::actions[] = {
   "Stop All",
 };
 
-MoveHandler::MoveHandler(std::vector<ArClientBase *> &clients)
+MoveHandler::MoveHandler(std::vector<SuperClient *> &clients)
   : myClients(clients), myClientIndex(0), myClient(myClients[0]),
     myTransRatio(0), myRotRatio(0), mySpeedLimit(70)
 {
@@ -144,7 +144,7 @@ const int MoveKeyHandler::keys[] = {
 
 // Attach keypress handlers
 MoveKeyHandler::MoveKeyHandler(
-    std::vector<ArClientBase *> &clients,
+    std::vector<SuperClient *> &clients,
     ArKeyHandler *keyHandler)
   : MoveHandler(clients), 
     myKeyHandler(keyHandler),
@@ -242,7 +242,7 @@ const char *MoveJoyHandler::keys[] = {
 };
 
 MoveJoyHandler::MoveJoyHandler(
-    std::vector<ArClientBase *> &clients, ArJoyHandler *joyHandler)
+    std::vector<SuperClient *> &clients, ArJoyHandler *joyHandler)
   : MoveHandler(clients), myJoyHandler(joyHandler)
 {
 }

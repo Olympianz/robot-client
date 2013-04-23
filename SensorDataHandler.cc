@@ -24,7 +24,7 @@ const float processNoiseCovValue = 1e-1;
 const float measurementNoiseCovValue = 1e-2;
 
 
-SensorDataHandler::SensorDataHandler(ArClientBase *client, 
+SensorDataHandler::SensorDataHandler(SuperClient *client, 
     const char *dataName, int requestFreq)
   : myClient(client), myDataName(strdup(dataName)),
     myRequestFreq(requestFreq), myDisplayCloud(new MyCloud)
@@ -66,7 +66,7 @@ const double SensorDataLaserHandler::toRadian = pi/180;
 // consists of x and y co-ordinate values.
 // Currently control information is not incorporated. The directional
 // velocities could be used.
-SensorDataLaserHandler::SensorDataLaserHandler(ArClientBase *client,
+SensorDataLaserHandler::SensorDataLaserHandler(SuperClient *client,
     const HostInfo &hostInfo)
   : SensorDataHandler(client, "getSensorDataLaser", hostInfo.requestFreq),
     myHandleFtr(this, &SensorDataLaserHandler::handle),
@@ -280,7 +280,7 @@ void SensorDataLaserHandler::writeTo(const std::string &outDir)
 // SensorDataStereoCamHandler
 ////////////////////////////////////////////////////////////////////
 
-SensorDataStereoCamHandler::SensorDataStereoCamHandler(ArClientBase *client,
+SensorDataStereoCamHandler::SensorDataStereoCamHandler(SuperClient *client,
     const HostInfo &hostInfo)
   : SensorDataHandler(client, "getSensorDataStereoCam", hostInfo.requestFreq),
     myHandleFtr(this, &SensorDataStereoCamHandler::handle)
@@ -342,7 +342,7 @@ void SensorDataStereoCamHandler::writeTo(const std::string &outDir)
 
 // Create sensor data handler objects
 void createSensorDataHandlers(
-    std::vector<ArClientBase *> &clients,
+    std::vector<SuperClient *> &clients,
     std::vector<SensorDataHandler *> &sensorDataHandlers,
     std::vector<HostInfo> &hostsInfo)
 {

@@ -9,6 +9,7 @@
 #include "pcl/point_cloud.h"
 
 #include "ConfigFileReader.h"
+#include "SuperClient.h"
 
 
 // forward declaration
@@ -58,12 +59,12 @@ public:
   void writeDisplayCloud(const std::string &outDir);
 
 protected:
-  SensorDataHandler(ArClientBase *client, const char *dataName,
+  SensorDataHandler(SuperClient *client, const char *dataName,
       		    int requestFreq);
   virtual ~SensorDataHandler();
   virtual void handle(ArNetPacket *packet) = 0;
 
-  ArClientBase *myClient;
+  SuperClient *myClient;
   const char *myDataName;
   const int myRequestFreq;
   MyCloud::Ptr myDisplayCloud;
@@ -74,7 +75,7 @@ protected:
 // handle laser data
 class SensorDataLaserHandler : public SensorDataHandler {
 public:
-  SensorDataLaserHandler(ArClientBase *client, const HostInfo &hostInfo);
+  SensorDataLaserHandler(SuperClient *client, const HostInfo &hostInfo);
   ~SensorDataLaserHandler();
   virtual void request();
   virtual void handle(ArNetPacket *packet);
@@ -104,7 +105,7 @@ private:
 // handle stereo camera data
 class SensorDataStereoCamHandler : public SensorDataHandler {
 public:
-  SensorDataStereoCamHandler(ArClientBase *client, const HostInfo &hostInfo);
+  SensorDataStereoCamHandler(SuperClient *client, const HostInfo &hostInfo);
   ~SensorDataStereoCamHandler();
   virtual void request();
   virtual void handle(ArNetPacket *packet);
@@ -119,7 +120,7 @@ private:
 
 // helper functions for sensor data handlers
 void createSensorDataHandlers(
-    std::vector<ArClientBase *> &clients,
+    std::vector<SuperClient *> &clients,
     std::vector<SensorDataHandler *> &sensorDataHandlers,
     std::vector<HostInfo> &hostsInfo);
 void writeSensorDataToDisk(

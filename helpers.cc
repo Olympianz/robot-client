@@ -8,7 +8,6 @@
 #include "SensorDataHandler.h"
 #include "SuperClient.h"
 
-
 // some message display routines
 void echo(const std::string &msg)
 {
@@ -62,13 +61,13 @@ const char *createRobotName(const HostInfo &hostInfo)
 
 // Connects to each IP address in hostsIP.
 // The client objects are stored in clients.
-void connectHosts(std::vector<ArClientBase *> &clients,
+void connectHosts(std::vector<SuperClient *> &clients,
                   const std::vector<HostInfo> &hostsInfo)
 {
-  ArClientBase *client = NULL;
+  SuperClient *client = NULL;
 
   for (unsigned int i = 0; i < hostsInfo.size(); i++) {
-    client = new ArClientBase;
+    client = new SuperClient;
     client->setRobotName(createRobotName(hostsInfo[i]));
 
     if (!client->blockingConnect(hostsInfo[i].ip, hostsInfo[i].port)) {
@@ -84,7 +83,7 @@ void connectHosts(std::vector<ArClientBase *> &clients,
 }
 
 // just start all the clients
-void startClients(std::vector<ArClientBase *> clients)
+void startClients(std::vector<SuperClient *> clients)
 {
   for (unsigned int i = 0; i < clients.size(); i++) {
     clients[i]->runAsync();
