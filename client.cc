@@ -130,7 +130,7 @@ int main(int argc, char **argv)
  
     ++receivedDataCounter;
     // print the receivied data from robot client
-    if (receivedDataCounter % 30 == 0){
+    if (receivedDataCounter % 5 == 0){
       // store successful connected clients and hostInfo to                      
       // ClientSocketUnit class                                                  
       //	ClientSocketUnit socketUnit(clients[0], hostsInfo);
@@ -138,9 +138,9 @@ int main(int argc, char **argv)
       //	ClientSockets socks(socketUnit);   
       //  socks.printData();
       
-      bool terse = true;
-      clients[0]->receivedDataToFile();
-      clients[0]->logTracking(terse);
+      bool plot = true;
+      clients[0]->receivedDataToFile(plot);
+//      clients[0]->logTracking(terse);
 
       receivedDataCounter = 0;    
     }  

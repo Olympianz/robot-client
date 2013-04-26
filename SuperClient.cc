@@ -10,7 +10,7 @@ long SuperClient::dataSent(){
 long SuperClient::dataReceived(){
 }
 
-void SuperClient::receivedDataToFile(){
+void SuperClient::receivedDataToFile(bool plot){
   myDataMutex.lock();
   myPacketTrackingMutex.lock();
   std::map<unsigned int, Tracker *>::iterator it;
@@ -55,10 +55,19 @@ void SuperClient::receivedDataToFile(){
 
   ofstream logfile;
   logfile.open ("DataLog.txt", ios::app);
-  logfile << "Data is recorded " << seconds << " seconds after activation from " << myLogPrefix.c_str(); 
-  logfile << '\n' <<  "Packets received: " << packetsReceivedTcp + packetsReceivedUdp << ", ";
-  logfile << "data received: " << bytesReceivedTcp + bytesReceivedUdp << " bytes.";
-  logfile << '\n' << "Average data receiving rate is " << (bytesReceivedTcp + bytesReceivedUdp)/seconds << " B/sec.";
+  if (plot){
+    logfile << seconds;
+    logfile << " ";
+    logfile << bytesReceivedTcp + bytesReceivedUdp;
+    logfile << endl;
+  }
+
+  else {
+    logfile << "Data is recorded " << seconds << " seconds after activation from " << myLogPrefix.c_str(); 
+    logfile << '\n' <<  "Packets received: " << packetsReceivedTcp + packetsReceivedUdp << ", ";
+    logfile << "data received: " << bytesReceivedTcp + bytesReceivedUdp << " bytes.";
+    logfile << '\n' << "Average data receiving rate is " << (bytesReceivedTcp + bytesReceivedUdp)/seconds << " B/sec.";
+  }
 
   long packetsSentTcp = 0;
   long bytesSentTcp = 0;
@@ -87,10 +96,12 @@ void SuperClient::receivedDataToFile(){
 	snprintf(name, sizeof(name), "#%d", command);
     }
 
-  logfile << '\n' <<  "Packets sent: " << packetsSentTcp + packetsSentUdp << ", ";
-  logfile << "data sent: " << bytesSentTcp + bytesSentUdp << " bytes.";
-  logfile << '\n' << "Average data sending rate is " << (bytesSentTcp + bytesSentUdp)/seconds << " B/sec.";
-  logfile << '\n' << '\n';
+  if (!plot){
+    logfile << '\n' <<  "Packets sent: " << packetsSentTcp + packetsSentUdp << ", ";
+    logfile << "data sent: " << bytesSentTcp + bytesSentUdp << " bytes.";
+    logfile << '\n' << "Average data sending rate is " << (bytesSentTcp + bytesSentUdp)/seconds << " B/sec.";
+    logfile << '\n' << '\n';
+  }
   logfile.close();
      
   myPacketTrackingMutex.unlock();
